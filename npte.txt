@@ -1,0 +1,11 @@
+
+notes:
+	dùng chung pkg với APB 
+	dùng chung env, test, test_top với APB
+
+	=> dùng scoreboard với APB
+	=> thêm TLM port cho monitor và driver để compare như APB;
+	=> điều chỉnh cái sequence cho nó phù hợp không rand trong AHB => không cần thiết 
+	=> ném vào chung cái môi trường của APB
+   
+ 	=> driver viết bằng cái FSM cho nó đúng
