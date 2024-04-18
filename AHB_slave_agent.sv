@@ -1,3 +1,13 @@
+import uvm_pkg::*;  `include "uvm_macros.svh"
+
+
+//import AHB_slave_pkg::*; 
+
+
+	`include "C:/Users/LENOVO/Desktop/AHB/AHB_slave/AHB_slave_sequencer.sv";
+	`include "C:/Users/LENOVO/Desktop/AHB/AHB_slave/AHB_slave_driver.sv";
+	`include "C:/Users/LENOVO/Desktop/AHB/AHB_slave/AHB_slave_monitor.sv";
+
 class AHB_slave_agent extends uvm_agent;
 
     AHB_slave_driver AHB_driver;
@@ -5,14 +15,14 @@ class AHB_slave_agent extends uvm_agent;
     AHB_slave_sequencer AHB_sequencer;
 
 	`uvm_component_utils_begin(AHB_slave_agent)
-		`uvm_feild_object(AHB_driver)
-		`uvm_feild_object(AHB_monitor)
-		`uvm_feild_object(AHB_sequencer)
+		`uvm_field_object(AHB_driver, UVM_ALL_ON)
+		`uvm_field_object(AHB_monitor, UVM_ALL_ON)
+		`uvm_field_object(AHB_sequencer, UVM_ALL_ON)
 	`uvm_component_utils_end
 
 	virtual AHB_slave_if vif; 
 
-	function void new (string name = "AHB_slave_agent", uvm_component parent);
+	function new (string name = "AHB_slave_agent", uvm_component parent);
 		super.new(name, this);
 	endfunction: new
 
@@ -33,9 +43,11 @@ class AHB_slave_agent extends uvm_agent;
 		
 	endfunction: build_phase
 
+
+
 	virtual function void connect_phase (uvm_phase phase);
 		AHB_driver.seq_item_port.connect(AHB_sequencer.seq_item_export);
-		`uvm_info("AHB_agent", "connected driver to sequencer in connect phase")
+		`uvm_info("AHB_agent", "connected driver to sequencer in connect phase", UVM_ALL_ON)
 	endfunction: connect_phase
 
 endclass: AHB_slave_agent  

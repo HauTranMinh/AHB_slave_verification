@@ -9,3 +9,6 @@ notes:
 	=> ném vào chung cái môi trường của APB
    
  	=> driver viết bằng cái FSM cho nó đúng
+ 	=> copy từ class xuống 
+ 	=> chỉnh lại interface cho đúng với DUT
+ 	=> điều chỉnh lại sequence và sequencer

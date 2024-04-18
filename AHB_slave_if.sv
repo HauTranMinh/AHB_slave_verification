@@ -1,3 +1,5 @@
+
+
 interface AHB_slave_if (); // need to see the DUT to get this correct
 //===========================INPUT PORT================================//
 	logic HCLK; // global signal => using raising edge clock

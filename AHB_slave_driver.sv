@@ -1,10 +1,13 @@
-class AHB_slave_driver extends uvm_driver #(AHB_slave_transaction);
+import uvm_pkg::*;  `include "uvm_macros.svh"
+
+class AHB_slave_driver extends uvm_driver;
 
 	`uvm_component_utils(AHB_slave_driver)
+
 	virtual AHB_slave_if vif;
 	// declare TLM port to double check here
 
-	function void new (string name = "AHB_slave_driver", uvm_component parent);
+	function new (string name = "AHB_slave_driver", uvm_component parent);
 		super.new(name, parent);
 	endfunction: new
 
@@ -27,12 +30,14 @@ class AHB_slave_driver extends uvm_driver #(AHB_slave_transaction);
 		super.build_phase(phase);
 		initial_val();
 
+		
+
 		forever begin
 			wait(vif.HRESETn == 0);
-			case (state)
-				// fsm for slave AHB protocol
-				default : `uvm_error("AHB_slave_driver", "unexpected transfer state!!!");
-			endcase
+			// case ()
+			// 	// fsm for slave AHB protocol
+			// 	default : `uvm_error("AHB_slave_driver", "unexpected transfer state!!!");
+			// endcase
 		end	
 	endtask: run_phase
 
